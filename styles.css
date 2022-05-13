@@ -91,6 +91,8 @@ button {
 }
 
 footer {
+    display: flex;
+    justify-content: center;
     font-size: 25px;
     text-align: center;
     position: fixed;
@@ -98,4 +100,11 @@ footer {
     left: 0px;
     right: 0px;
     margin-bottom: 0px;
+}
+
+img {
+    margin-top: 10px;
+    margin-left: 10px;
+    height: 50px;
+    width: 50px;
 }
