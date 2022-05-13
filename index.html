@@ -3,7 +3,7 @@
 <head>
     <title> The Odin Project: Calculator</title>
     <meta charset="utf-8";>
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
@@ -13,33 +13,33 @@
             <p class="bottom-display">345</p>
         </div>
         <div class="options">
-            <button class="clear-button">CLEAR</button>
-            <button class="delete-button">DELETE</button>
+            <button id="clear-button">CLEAR</button>
+            <button id="delete-button">DELETE</button>
         </div>    
         <div class="digits">
             <div class="first-row">
             <button class="numberData">7</button>
             <button class="numberData">8</button>
             <button class="numberData">9</button>
-            <button class="divide">÷</button>
+            <button id="divide">÷</button>
             </div>
             <div class="second-row">
             <button class="numberData">4</button>
             <button class="numberData">5</button>
             <button class="numberData">6</button>
-            <button class="multiply">×</button>
+            <button id="multiply">×</button>
             </div>
             <div class="third-row">
             <button class="numberData">1</button>
             <button class="numberData">2</button>
             <button class="numberData">3</button>
-            <button class="substract">-</button>
+            <button id="substract">-</button>
             </div>
             <div class="fourth-row">
-            <button class="decimal">.</button>
+            <button id="decimal">.</button>
             <button class="numberData">0</button>
-            <button class="equals">=</button>
-            <button class="sums">+</button>
+            <button id="equals">=</button>
+            <button id="sums">+</button>
             </div>
         </div>
     </div>

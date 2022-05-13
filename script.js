@@ -2,15 +2,15 @@ let firstOperand;
 let secondOperand;
 let operatorSymbol;
 
-let clearButton = document.querySelector(".clear-button"); 
-let deleteButton = document.querySelector(".delete-button");
-let divideButton = document.querySelector(".divide");
-let multiplyButton = document.querySelector(".multiply");
-let substractButton = document.querySelector(".substract")
-let sumButton = document.querySelector(".sums");
-let equalsButton = document.querySelector(".equals")
-let decimalButton = document.querySelector(".decimal"); 
-let digits = document.querySelectorAll(".numberData");
+let clearButton = document.getElementById("clear-button"); 
+let deleteButton = document.getElementById("delete-button");
+let divideButton = document.getElementById("divide");
+let multiplyButton = document.getElementById("multiply");
+let substractButton = document.getElementById("substract")
+let sumButton = document.getElementById("sums");
+let equalsButton = document.getElementById("equals")
+let decimalButton = document.getElementById("decimal"); 
+let digits = document.getElementsByClassName("numberData");
 
 function sum(a, b){
     return a + b

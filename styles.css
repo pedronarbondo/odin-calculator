@@ -60,18 +60,24 @@ button {
     cursor: pointer;
 }
 
-.clear-button {
+#clear-button {
     background-color: #ffb3b3;
 }
-.delete-button {
+#delete-button {
     background-color: #4dffff;
 }
 
-.clear-button:hover {
+#clear-button:hover {
     background-color: #ff8080;
 }
-.delete-button:hover {
+#clear-button:active {
+    background-color: #ff6666
+}
+#delete-button:hover {
     background-color: #00e6e6;
+}
+#delete-button:active {
+    background-color: #00cccc
 }
 
 .digits {
@@ -96,7 +102,9 @@ button {
 .digits button:hover {
     background-color: #d9d9d9;
 }
-
+.digits button:active {
+    background-color: #cccccc
+}
 .first-row,
 .second-row,
 .third-row,
