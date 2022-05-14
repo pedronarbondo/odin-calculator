@@ -88,21 +88,35 @@ function operatorButton(operator){
     }
 }
 
-/*function theEqualsButton(operator){
-    topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} = 
-    ${operate(operator, firstOperand, secondOperand)}`;
-    bottomDisplay.textContent = `${operate(operator, firstOperand, secondOperand)}`;
+function theEqualsButton(operator){
+    if (secondOperator === 1){
+    secondOperand = parseInt(bottomDisplay.textContent);
+    resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
+    topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} = `
+    bottomDisplay.textContent = resultOperand;
+    operatorSymbol = ""
+    secondOperator = 0;
+    return
+    }
+    else if (secondOperator === 2){
+        secondOperand = parseInt(bottomDisplay.textContent);
+        firstOperand = resultOperand;
+        topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} =`;
+        resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
+        bottomDisplay.textContent = resultOperand;
+        operatorSymbol = "";
+        secondOperator = 0;
+    }
 }
-*/
+
+
 
 divideButton.addEventListener("click", () => operatorButton(divideButton.textContent));
 multiplyButton.addEventListener("click", () => operatorButton(multiplyButton.textContent));
 substractButton.addEventListener("click", () => operatorButton(substractButton.textContent));
 sumButton.addEventListener("click", () => operatorButton(sumButton.textContent));
 
-equalsButton.addEventListener("click", () => theEqualsButton());
-
-
+equalsButton.addEventListener('click', () => theEqualsButton());
 
 function sum(a, b){
     return a + b
