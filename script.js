@@ -62,28 +62,31 @@ let secondOperator = 0;
 function operatorButton(operator){
     if (secondOperator === 0){
         operatorSymbol = operator;
-        firstOperand = parseInt(bottomDisplay.textContent);
+        firstOperand = parseFloat(bottomDisplay.textContent);
         bottomDisplay.textContent = "";
         topDisplay.textContent = `${firstOperand} ${operator}`;
         secondOperator = 1
+        decimalAmount = 0;
     return
     }
     else if (secondOperator === 1) {
-        secondOperand = parseInt(bottomDisplay.textContent);
+        secondOperand = parseFloat(bottomDisplay.textContent);
         resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
         topDisplay.textContent = `${resultOperand} ${operator}`;
         bottomDisplay.textContent = "";
         operatorSymbol = operator;
         secondOperator = 2;
+        decimalAmount = 0;
         return
     }
     else if (secondOperator === 2){
-        secondOperand = parseInt(bottomDisplay.textContent);
+        secondOperand = parseFloat(bottomDisplay.textContent);
         firstOperand = operate(operatorSymbol, resultOperand, secondOperand);
         operatorSymbol = operator;
         topDisplay.textContent = `${firstOperand} ${operator}`;
         resultOperand = firstOperand;
         bottomDisplay.textContent = "";
+        decimalAmount = 0;
         return
     }
 }
@@ -98,33 +101,43 @@ function theEqualsButton(){
     }
 
     else if (secondOperator === 1){
-    secondOperand = parseInt(bottomDisplay.textContent);
+    secondOperand = parseFloat(bottomDisplay.textContent);
     resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
     topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} = `
     bottomDisplay.textContent = resultOperand;
     operatorSymbol = ""
     secondOperator = 0;
+    decimalAmount = 0;
     return
     }
     else if (secondOperator === 2){
-        secondOperand = parseInt(bottomDisplay.textContent);
+        secondOperand = parseFloat(bottomDisplay.textContent);
         firstOperand = resultOperand;
         topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} =`;
         resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
         bottomDisplay.textContent = resultOperand;
         operatorSymbol = "";
         secondOperator = 0;
+        decimalAmount = 0;
     }
 }
 
-
+let decimalAmount = 0;
+function addDecimal(){
+    if (decimalAmount == 0){
+        bottomDisplay.textContent = `${bottomDisplay.textContent}.`;
+        decimalAmount = 1;
+    }
+    else return;
+}
 
 divideButton.addEventListener("click", () => operatorButton(divideButton.textContent));
 multiplyButton.addEventListener("click", () => operatorButton(multiplyButton.textContent));
 substractButton.addEventListener("click", () => operatorButton(substractButton.textContent));
 sumButton.addEventListener("click", () => operatorButton(sumButton.textContent));
 
-equalsButton.addEventListener('click', () => theEqualsButton());
+equalsButton.addEventListener("click", () => theEqualsButton());
+decimalButton.addEventListener("click", () => addDecimal())
 
 function sum(a, b){
     return a + b
@@ -144,15 +157,15 @@ function divide(a, b){
 
 function operate(operator, a, b){
 if (operator == sumButton.textContent) {
-    return sum(a, b);
+    return sum(a, b).toFixed(3).replace(/\.000$/, '');
 }
 else if (operator == substractButton.textContent){
-    return substract(a, b);
+    return substract(a, b).toFixed(3).replace(/\.000$/, '');
 }
 else if (operator == divideButton.textContent){
-    if (b === 0) return null;
-    else return divide(a, b).toFixed(4);
+    if (b === 0) return "You cannot divide by Zero.";
+    else return divide(a, b).toFixed(3);
 }
 else if (operator == multiplyButton.textContent)
-    return multiply(a, b);
+    return multiply(a, b).toFixed(3).replace(/\.000$/, '');
 }
