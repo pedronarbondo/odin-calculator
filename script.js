@@ -1,7 +1,3 @@
-let firstOperand;
-let secondOperand;
-let operatorSymbol;
-
 let clearButton = document.getElementById("clear-button"); 
 let deleteButton = document.getElementById("delete-button");
 let divideButton = document.getElementById("divide");
@@ -27,9 +23,8 @@ let seven = document.querySelector(".seven");
 let eight = document.querySelector(".eight");
 let nine = document.querySelector(".nine");
 
-zero.addEventListener("click", () => {
-    if (bottomDisplay.textContent != `${/^00/}`){
-    bottomDisplay.textContent = `${bottomDisplay.textContent}${zero.textContent}`}})
+zero.addEventListener("click", () => bottomDisplay.textContent = 
+`${bottomDisplay.textContent}${zero.textContent}`)
 one.addEventListener("click", () => bottomDisplay.textContent = 
 `${bottomDisplay.textContent}${one.textContent}`)
 two.addEventListener("click", () => bottomDisplay.textContent = 
@@ -52,9 +47,45 @@ nine.addEventListener("click", () => bottomDisplay.textContent =
 function clearScreens(){
     topDisplay.textContent = "";
     bottomDisplay.textContent = "";
+    secondOperator = false;
     return;
 }
+
 clearButton.addEventListener("click", clearScreens);
+
+
+let firstOperand;
+let secondOperand;
+let secondOperator = false;
+function operatorButton(operator){
+    if (secondOperator == false){
+        firstOperand = parseInt(bottomDisplay.textContent);
+        bottomDisplay.textContent = "";
+        topDisplay.textContent = `${firstOperand} ${operator}`;
+        secondOperator = true;
+    return
+    }
+    else {
+        secondOperand = parseInt(bottomDisplay.textContent);
+        topDisplay.textContent = `${operate(operator, firstOperand, secondOperand)} ${operator}`;
+        bottomDisplay.textContent = `${operate(operator, firstOperand, secondOperand)}`;
+    }
+}
+
+function theEqualsButton(operator){
+    topDisplay.textContent = `${firstOperand} ${operator} ${secondOperand} = 
+    ${operate(operator, firstOperand, secondOperand)}`;
+    bottomDisplay.textContent = `${operate(operator, firstOperand, secondOperand)}`;
+}
+
+
+divideButton.addEventListener("click", () => operatorButton(divideButton.textContent));
+multiplyButton.addEventListener("click", () => operatorButton(multiplyButton.textContent));
+substractButton.addEventListener("click", () => operatorButton(substractButton.textContent));
+sumButton.addEventListener("click", () => operatorButton(sumButton.textContent));
+
+equalsButton.addEventListener("click", () => theEqualsButton());
+
 
 
 function sum(a, b){
@@ -74,16 +105,16 @@ function divide(a, b){
 }
 
 function operate(operator, a, b){
-if (operator == sum) {
+if (operator == sumButton.textContent) {
     return sum(a, b);
 }
-else if (operator == substract){
+else if (operator == substractButton.textContent){
     return substract(a, b);
 }
-else if (operator == divide){
+else if (operator == divideButton.textContent){
     if (b === 0) return null;
     else return divide(a, b);
 }
-else if (operator == multiply)
+else if (operator == multiplyButton.textContent)
     return multiply(a, b);
 }

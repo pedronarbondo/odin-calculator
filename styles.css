@@ -25,21 +25,22 @@ div {
     background-color: white;
     width: 90%;
     height: 120px;
+    gap: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px
 }
 
 .display > div {
     height: 30px;
     border: none;
 }
-.display p {
-    margin-right: 15px;
-}
+
 .top-display {
-    font-size: 40px;
-    margin-top: 10px;
+    font-size: 30px;
 }
 .bottom-display {
-    font-size: 30px;
+    font-size: 40px;
 }
 
 .options {
