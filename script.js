@@ -88,8 +88,16 @@ function operatorButton(operator){
     }
 }
 
-function theEqualsButton(operator){
-    if (secondOperator === 1){
+function theEqualsButton(){
+    if (bottomDisplay.textContent == ""){
+        topDisplay.textContent = "ERROR, missing second operand";
+        firstOperand = ""
+        secondOperand = "";
+        secondOperator = 0;
+        return;
+    }
+
+    else if (secondOperator === 1){
     secondOperand = parseInt(bottomDisplay.textContent);
     resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
     topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} = `
