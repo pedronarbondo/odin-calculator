@@ -47,7 +47,7 @@ nine.addEventListener("click", () => bottomDisplay.textContent =
 function clearScreens(){
     topDisplay.textContent = "";
     bottomDisplay.textContent = "";
-    secondOperator = false;
+    secondOperator = 0;
     return;
 }
 
@@ -56,28 +56,44 @@ clearButton.addEventListener("click", clearScreens);
 
 let firstOperand;
 let secondOperand;
-let secondOperator = false;
+let operatorSymbol;
+let resultOperand;
+let secondOperator = 0;
 function operatorButton(operator){
-    if (secondOperator == false){
+    if (secondOperator === 0){
+        operatorSymbol = operator;
         firstOperand = parseInt(bottomDisplay.textContent);
         bottomDisplay.textContent = "";
         topDisplay.textContent = `${firstOperand} ${operator}`;
-        secondOperator = true;
+        secondOperator = 1
     return
     }
-    else {
+    else if (secondOperator === 1) {
         secondOperand = parseInt(bottomDisplay.textContent);
-        topDisplay.textContent = `${operate(operator, firstOperand, secondOperand)} ${operator}`;
-        bottomDisplay.textContent = `${operate(operator, firstOperand, secondOperand)}`;
+        resultOperand = operate(operatorSymbol, firstOperand, secondOperand);
+        topDisplay.textContent = `${resultOperand} ${operator}`;
+        bottomDisplay.textContent = "";
+        operatorSymbol = operator;
+        secondOperator = 2;
+        return
+    }
+    else if (secondOperator === 2){
+        secondOperand = parseInt(bottomDisplay.textContent);
+        firstOperand = operate(operatorSymbol, resultOperand, secondOperand);
+        operatorSymbol = operator;
+        topDisplay.textContent = `${firstOperand} ${operator}`;
+        resultOperand = firstOperand;
+        bottomDisplay.textContent = "";
+        return
     }
 }
 
-function theEqualsButton(operator){
-    topDisplay.textContent = `${firstOperand} ${operator} ${secondOperand} = 
+/*function theEqualsButton(operator){
+    topDisplay.textContent = `${firstOperand} ${operatorSymbol} ${secondOperand} = 
     ${operate(operator, firstOperand, secondOperand)}`;
     bottomDisplay.textContent = `${operate(operator, firstOperand, secondOperand)}`;
 }
-
+*/
 
 divideButton.addEventListener("click", () => operatorButton(divideButton.textContent));
 multiplyButton.addEventListener("click", () => operatorButton(multiplyButton.textContent));
@@ -113,7 +129,7 @@ else if (operator == substractButton.textContent){
 }
 else if (operator == divideButton.textContent){
     if (b === 0) return null;
-    else return divide(a, b);
+    else return divide(a, b).toFixed(4);
 }
 else if (operator == multiplyButton.textContent)
     return multiply(a, b);
