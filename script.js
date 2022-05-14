@@ -164,7 +164,7 @@ function divide(a, b){
 
 function operate(operator, a, b){
 if (operator == sumButton.textContent) {
-    return sum(a, b).toFixed(3).replace(/\.000$/, '');
+    return sum(a, b)
 }
 else if (operator == substractButton.textContent){
     return substract(a, b).toFixed(3).replace(/\.000$/, '');
