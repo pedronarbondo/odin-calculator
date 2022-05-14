@@ -27,12 +27,15 @@ div {
     height: 120px;
 }
 
+.display > div {
+    height: 30px;
+    border: none;
+}
 .display p {
     margin-right: 15px;
 }
 .top-display {
     font-size: 40px;
-    margin-bottom: -10px;
     margin-top: 10px;
 }
 .bottom-display {
