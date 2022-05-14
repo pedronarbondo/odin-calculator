@@ -51,7 +51,22 @@ function clearScreens(){
     return;
 }
 
-clearButton.addEventListener("click", clearScreens);
+function deleteDigit(){
+    let arrayedDisplay = bottomDisplay.textContent.split("");
+    arrayedDisplay.splice(arrayedDisplay.length-1, 1);
+    let newBottomDisplay = arrayedDisplay.join("");
+    bottomDisplay.textContent = newBottomDisplay;
+}
+
+
+let decimalAmount = 0;
+function addDecimal(){
+    if (decimalAmount == 0){
+        bottomDisplay.textContent = `${bottomDisplay.textContent}.`;
+        decimalAmount = 1;
+    }
+    else return;
+}
 
 
 let firstOperand;
@@ -122,22 +137,14 @@ function theEqualsButton(){
     }
 }
 
-let decimalAmount = 0;
-function addDecimal(){
-    if (decimalAmount == 0){
-        bottomDisplay.textContent = `${bottomDisplay.textContent}.`;
-        decimalAmount = 1;
-    }
-    else return;
-}
-
 divideButton.addEventListener("click", () => operatorButton(divideButton.textContent));
 multiplyButton.addEventListener("click", () => operatorButton(multiplyButton.textContent));
 substractButton.addEventListener("click", () => operatorButton(substractButton.textContent));
 sumButton.addEventListener("click", () => operatorButton(sumButton.textContent));
-
 equalsButton.addEventListener("click", () => theEqualsButton());
 decimalButton.addEventListener("click", () => addDecimal())
+clearButton.addEventListener("click", () => clearScreens());
+deleteButton.addEventListener("click", () => deleteDigit());
 
 function sum(a, b){
     return a + b
