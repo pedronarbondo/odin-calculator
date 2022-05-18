@@ -74,6 +74,7 @@ let secondOperand;
 let operatorSymbol;
 let resultOperand;
 let secondOperator = 0;
+/* The variable secondOperator goes into action when one's chaining operators in the calculator. For ex. 8*8*8*8.*/
 function operatorButton(operator){
     if (secondOperator === 0){
         operatorSymbol = operator;
