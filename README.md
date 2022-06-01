@@ -12,4 +12,3 @@ It took 59:42s to design the calculator (HTML/CSS) and
 about 4/5 hours to code all of the logic. I lost track of how long it took
 to write everything JS related, but it was no more than 5 hours. Yay me.
 
-Next up is FullStack Intermediate Javascript.
